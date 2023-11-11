@@ -1,0 +1,84 @@
+this was ref of textinput 
+
+const input1Ref = useRef(null);
+const input2Ref = useRef(null);
+const input3Ref = useRef(null);
+const input4Ref = useRef(null);
+
+
+//function to move anotehr block and back to previous block
+
+const handleInputChange = (value, currentRef, prevRef) => {
+  if (!value && prevRef?.current) {
+    prevRef?.current?.focus();
+  } else {
+    currentRef?.current && currentRef?.current?.focus();
+  }
+};
+
+
+here you can write this in textinputs compkennts
+
+   <Inputcard
+        reff={input1Ref}
+        placeholdertext="Enter Here"
+        keyboardType="numeric"
+        maxLength={1}
+        value={otp}
+        onChangeText={(value) => {
+            setOtp(value);
+            handleInputChange(value, input2Ref, input1Ref);
+          }}
+        otp
+      />
+      <Inputcard
+        reff={input2Ref}
+        placeholdertext="Enter Here"
+        keyboardType="numeric"
+        maxLength={1}
+        value={otp1}
+        onChangeText={(value) => {
+            setOtp1(value);
+            handleInputChange(value, input3Ref, input1Ref);
+          }}
+        otp
+      />
+      <Inputcard
+        reff={input3Ref}
+        placeholdertext="Enter Here"
+        keyboardType="numeric"
+        maxLength={1}
+        value={otp2}
+        onChangeText={(value) => {
+            setOtp2(value);
+            handleInputChange(value, input4Ref, input2Ref);
+          }}
+        otp
+      />
+      <Inputcard
+        reff={input4Ref}
+        placeholdertext="Enter Here"
+        keyboardType="numeric"
+        maxLength={1}
+        value={otp3}
+        onChangeText={(value) => {
+            setOtp3(value);
+            handleInputChange(value, null, input3Ref);
+          }}
+        otp
+      />
+
+it works perfectly now ......
+enjoy 
+
+or where is yopur textinput compnent make sure pass like
+import react,{useReff} from react-native
+const[reff,setReff]=useState('')
+// or add now that thing
+let ref=reff
+if(reff){
+  ref = useRef(null);
+}
+
+<Textinput
+ref={props.reff}/>
